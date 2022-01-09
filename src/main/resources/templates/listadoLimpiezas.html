@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" content="text/html; charset=UTF-8">
+<title>Pesquera</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+	integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<img th:src="@{/images/limpiezaa.png}" width="136" height="136">
+			<h2>Listado de Limpiezas</h2>
+
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link"
+						href="/limpieza/crearLimpieza"> Registro de Limpieza</a></li>
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<table class="table table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th>Id Limpieza</th>
+				<th>Hora Inicio</th>
+				<th>Hora Final</th>
+				<th>Cantidad  Empleados</th>
+				<th>Detalle</th>
+
+			</tr>
+		</thead>
+		<tr th:each="tmpLimpieza:${limpiezas}">
+			<td th:text="${tmpLimpieza.idLimpieza}"></td>
+			<td th:text="${tmpLimpieza.horaInicio}"></td>
+			<td th:text="${tmpLimpieza.horaFinal}"></td>
+			<td th:text="${tmpLimpieza.cantidadEmpleados}"></td>
+			<td><a
+				th:href="@{/limpieza/detalle/{id} (id=${tmpLimpieza.idLimpieza})}"
+				class="btn btn-primary">Detalle</a></td>
+		</tr>
+	</table>
+
+
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+		integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
